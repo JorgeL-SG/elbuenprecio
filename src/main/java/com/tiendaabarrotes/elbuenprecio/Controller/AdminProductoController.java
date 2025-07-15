@@ -4,6 +4,7 @@ import com.tiendaabarrotes.elbuenprecio.Model.Producto;
 import com.tiendaabarrotes.elbuenprecio.Repository.CategoriaRepository;
 import com.tiendaabarrotes.elbuenprecio.Repository.MarcaRepository;
 import com.tiendaabarrotes.elbuenprecio.Repository.ProductoRepository;
+import com.tiendaabarrotes.elbuenprecio.Service.CloudinaryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,6 +35,7 @@ import com.tiendaabarrotes.elbuenprecio.Service.CartService;
 import jakarta.servlet.http.HttpSession;
 
 
+
 @Controller
 @RequestMapping("/admin")
 public class AdminProductoController {
@@ -43,6 +45,9 @@ public class AdminProductoController {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private CloudinaryService cloudinaryService;
 
     @Autowired
     private MarcaRepository marcaRepository;
@@ -145,16 +150,15 @@ public class AdminProductoController {
             return "admin/producto-form";
         }
 
+        // ----- INICIO DE LA SECCIÓN MODIFICADA -----
         if (file != null && !file.isEmpty()) {
             try {
-                String uniqueFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-                Path uploadPath = Paths.get(uploadDir);
-                if (!Files.exists(uploadPath)) {
-                    Files.createDirectories(uploadPath);
-                }
-                Path filePath = uploadPath.resolve(uniqueFileName);
-                Files.copy(file.getInputStream(), filePath);
-                producto.setNombreImagen(uniqueFileName);
+                // 1. Subimos el archivo a Cloudinary y obtenemos la URL segura
+                String imageUrl = cloudinaryService.uploadFile(file);
+
+                // 2. Guardamos esa URL completa en el producto
+                producto.setNombreImagen(imageUrl);
+
             } catch (IOException e) {
                 e.printStackTrace();
                 redirectAttributes.addFlashAttribute("error", "Error al subir la imagen: " + e.getMessage());
@@ -166,10 +170,12 @@ public class AdminProductoController {
                 return "admin/producto-form";
             }
         } else if (producto.getId() != null && existingImageName != null && !existingImageName.isEmpty()) {
+            // Esta parte se queda igual, asume que existingImageName ya es la URL de una imagen existente
             producto.setNombreImagen(existingImageName);
         } else {
             producto.setNombreImagen(null);
         }
+        // ----- FIN DE LA SECCIÓN MODIFICADA -----
 
         producto.setEnOferta("on".equals(enOfertaCheckboxValue));
         productoRepository.save(producto);

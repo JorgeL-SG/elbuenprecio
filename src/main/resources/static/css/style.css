@@ -1,0 +1,297 @@
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #f8f7fa;
+    color: #4b0082;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    background-color: #4b0082;
+}
+
+.btn-primary {
+    background-color: #4b0082;
+    border-color: #4b0082;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-primary:hover {
+    background-color: #FFD700;
+    border-color: #FFD700;
+    color: #4b0082;
+}
+.btn-secondary {
+    color: #4b0082;
+    background-color: #f0eaff;
+    border-color: #f0eaff;
+}
+.btn-secondary:hover {
+    background-color: #e0d6f2;
+    border-color: #e0d6f2;
+    color: #4b0082;
+}
+.btn-link {
+    color: #4b0082;
+}
+.btn-link:hover {
+    color: #6f42c1;
+}
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.25);
+    border-color: #6f42c1;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(111, 66, 193, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(111, 66, 193, 0.2);
+}
+.card-title {
+    color: #4b0082;
+    font-weight: 700;
+}
+.card .card-header {
+    background-color: transparent;
+    border-bottom: 1px solid #f0eaff;
+}
+
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+.carousel-caption {
+    bottom: 20%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(111, 66, 193, 0.25) !important;
+}
+.category-card .icon-container {
+    font-size: 4rem;
+    color: #6f42c1;
+}
+
+.product-card .card-img-container {
+    overflow: hidden;
+    padding: 1rem;
+}
+.product-card img {
+    max-height: 180px;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+.product-card:hover img {
+    transform: scale(1.05);
+}
+.product-card .card-title {
+    min-height: 48px;
+}
+.product-card .product-price {
+    font-size: 1.5rem;
+    color: #4b0082;
+    font-weight: 700;
+}
+.offer-badge {
+    position: absolute;
+    top: 15px;
+    left: -8px;
+    background-color: #FFD700;
+    color: #4b0082;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-size: 0.9em;
+    z-index: 10;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+.offer-badge::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-top: 8px solid #c8a900;
+    border-left: 8px solid transparent;
+}
+.filter-btn-group .btn {
+    border-width: 2px;
+}
+
+.cart-table-pro {
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+}
+.cart-table-pro thead th {
+    border: none;
+    padding-bottom: 0;
+    color: #6f42c1;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+.cart-table-pro td {
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #f0eaff;
+    border-left: none;
+    border-right: none;
+}
+.cart-table-pro tr td:first-child {
+    border-left: 1px solid #f0eaff;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+.cart-table-pro tr td:last-child {
+    border-right: 1px solid #f0eaff;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+.cart-item-img-pro {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.confirmation-card {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 2rem;
+}
+.success-animation {
+    margin: 0 auto 20px auto;
+}
+.checkmark {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 3;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #4b0082;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    margin: 0 auto;
+}
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+    stroke: #4b0082;
+    fill: none;
+    animation: stroke .6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke .3s cubic-bezier(0.65, 0, 0.45, 1) .8s forwards;
+}
+@keyframes stroke { 100% { stroke-dashoffset: 0; } }
+@keyframes scale { 0%, 100% { transform: none; } 50% { transform: scale3d(1.1, 1.1, 1); } }
+@keyframes fill { 100% { box-shadow: inset 0px 0px 0px 60px #4b0082; } }
+
+.order-number-box {
+    background-color: rgba(253, 216, 53, 0.15);
+    border: 2px dashed #6f42c1;
+    padding: 15px;
+    border-radius: 12px;
+    color: #4b0082;
+}
+
+body.admin-dashboard {
+    background-color: #f8f7fa;
+}
+.admin-dashboard .display-5 {
+    color: #4b0082;
+}
+.stat-card .card-body {
+    display: flex;
+    align-items: center;
+}
+.stat-card .icon {
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+    color: #6f42c1;
+}
+.action-card .icon-circle {
+    height: 70px;
+    width: 70px;
+    background-color: #6f42c1;
+    color: #ffffff;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+.action-card:hover .icon-circle {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 20px rgba(111, 66, 193, 0.3);
+    background-color: #4b0082;
+}
+.action-card .card-title {
+    font-weight: 600;
+}
+.admin-dashboard .table thead {
+    background-color: #f8f7fa;
+    color: #4b0082;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.footer-themed {
+    background-color: #4b0082;
+    color: #e9ecef;
+}
+.footer-themed h5 {
+    color: #FFD700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
+.footer-themed a {
+    color: #e9ecef;
+    transition: color 0.3s ease;
+}
+.footer-themed a:hover {
+    color: #FFD700;
+}
+
+.accordion-item {
+    background-color: #fff;
+    border: 1px solid #e0d6f2;
+    border-radius: 12px !important;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.accordion-button {
+    font-size: 0.95rem;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #4b0082;
+    background-color: #f8f7fa;
+    box-shadow: inset 0 -1px 0 #e0d6f2;
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    border-color: #a37ee3;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.25);
+}
+
+.accordion-button::after {
+    filter: invert(21%) sepia(58%) saturate(3048%) hue-rotate(258deg) brightness(88%) contrast(93%);
+}

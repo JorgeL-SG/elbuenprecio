@@ -1,0 +1,62 @@
+body.auth-page {
+    background-color: #f8f7fa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.login-panel {
+    min-height: 80vh;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.branding-column {
+    background-image: url('../img/login-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    color: white;
+}
+
+.branding-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(75, 0, 130, 0.8), rgba(111, 66, 193, 0.7));
+    z-index: 1;
+}
+
+.branding-content {
+    position: relative;
+    z-index: 2;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+}
+
+.input-group-text {
+    background-color: #f8f7fa;
+    border-right: none;
+    color: #6f42c1;
+}
+
+.form-column .form-control {
+    border-left: none;
+}

@@ -1,0 +1,36 @@
+<header xmlns:sec="http://www.w3.org/1999/xhtml">
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color: #4b0082;">
+    <div class="container-fluid">
+      <a class="navbar-brand" th:href="@{/}" style="font-weight: bold;">
+        <img th:src="@{/img/logo.svg}" alt="Logo" height="50" class="me-2">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-shield me-2"></i>
+              <span sec:authentication="name">Usuario</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" th:href="@{/admin}"><i class="fas fa-tachometer-alt fa-fw me-2"></i>Panel Principal</a></li>
+              <li><a class="dropdown-item" th:href="@{/admin/productos/lista}"><i class="fas fa-box-open fa-fw me-2"></i>Productos</a></li>
+              <li><a class="dropdown-item" th:href="@{/admin/pedidos/lista}"><i class="fas fa-receipt fa-fw me-2"></i>Pedidos</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <form th:action="@{/logout}" method="post" class="px-2">
+                  <button type="submit" class="btn btn-sm btn-outline-danger w-100">
+                    <i class="fas fa-sign-out-alt fa-fw me-2"></i>Cerrar Sesión
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

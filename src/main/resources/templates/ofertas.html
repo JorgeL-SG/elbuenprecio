@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${tituloSeccion}">Ofertas | El Buen Precio</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" /> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<main class="container my-5 flex-grow-1">
+    <h2 class="mb-4" th:text="${tituloSeccion}">Todas nuestras Ofertas</h2>
+
+    <div th:if="${success}" class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+        <i class="fas fa-check-circle me-2"></i><div th:text="${success}"></div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+        <i class="fas fa-exclamation-triangle me-2"></i><div th:text="${error}"></div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mt-3">
+        <div class="col" th:each="producto : ${productos}">
+            <div class="card h-100 product-card">
+                <span th:if="${producto.enOferta}" class="offer-badge">¡OFERTA!</span>
+
+                <div class="card-img-container">
+                    <img th:if="${producto.nombreImagen}" th:src="@{'uploaded-images/productos/' + ${producto.nombreImagen}}" class="card-img-top" alt="Imagen del producto" />
+                    <img th:unless="${producto.nombreImagen}" th:src="@{/img/placeholder.png}" class="card-img-top" alt="No Image" />
+                </div>
+
+                <div class="card-body d-flex flex-column text-center">
+                    <h5 class="card-title" th:text="${producto.nombre}">Nombre del Producto</h5>
+                    <p class="card-text text-muted small" th:text="${producto.marca?.nombre}"></p>
+
+                    <div class="mt-auto">
+                        <p class="product-price mb-3" th:text="'S/ ' + ${#numbers.formatDecimal(producto.precio, 1, 2)}"></p>
+
+                        <form th:action="@{/carrito/add}" method="post" class="d-grid">
+                            <input type="hidden" name="productoId" th:value="${producto.id}" />
+                            <input type="hidden" name="cantidad" value="1" />
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-cart-plus me-2"></i>Añadir al Carrito
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12" th:if="${productos.empty}">
+            <div class="text-center py-5">
+                <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                <h4>No se encontraron productos</h4>
+                <p class="text-muted">Intenta ajustar tu búsqueda o explora otras categorías.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

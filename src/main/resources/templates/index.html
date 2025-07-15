@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El Buen Precio | Ofertas en Tecnología, Hogar y Más</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<header th:replace="~{fragments/header :: header}"></header>
+
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="5000">
+            <img th:src="@{/img/sliderSamsung.jpg}" class="d-block w-100" alt="Banner Samsung">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="display-4 fw-bold">Tecnología de Vanguardia</h1>
+                <p class="lead">Descubre lo último en smartphones y gadgets de Samsung.</p>
+                <a th:href="@{/ofertas}" class="btn btn-primary btn-lg">Ver Ofertas</a>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+            <img th:src="@{/img/sliderOster.jpg}" class="d-block w-100" alt="Banner Oster">
+            <div class="carousel-caption d-none d-md-block">
+                <h1 class="display-4 fw-bold">Renueva tu Cocina</h1>
+                <p class="lead">Los mejores electrodomésticos Oster para tu hogar.</p>
+                <a th:href="@{/ofertas}" class="btn btn-light btn-lg">Explorar Ahora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5 py-5">
+    <h2 class="text-center fw-bold display-5 mb-5" style="color: #4b0082;">Explora Nuestras Categorías</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        <div class="col">
+            <div class="card h-100 text-center py-4 category-card">
+                <div class="icon-container"><i class="fas fa-microchip"></i></div>
+                <div class="card-body">
+                    <h5 class="card-title">Tecnología</h5>
+                    <p class="card-text text-muted">Smartphones, laptops y más.</p>
+                    <a class="btn btn-outline-primary mt-3" th:href="@{/ofertas(categoria=${tecnologiaId})}">Ver Más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 text-center py-4 category-card">
+                <div class="icon-container"><i class="fas fa-headphones-alt"></i></div>
+                <div class="card-body">
+                    <h5 class="card-title">Accesorios</h5>
+                    <p class="card-text text-muted">Fundas, relojes y más.</p>
+                    <a class="btn btn-outline-primary mt-3" th:href="@{/ofertas(categoria=${accesoriosId})}">Ver Más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 text-center py-4 category-card">
+                <div class="icon-container"><i class="fas fa-blender"></i></div>
+                <div class="card-body">
+                    <h5 class="card-title">Electrodomésticos</h5>
+                    <p class="card-text text-muted">Todo para tu cocina y hogar.</p>
+                    <a class="btn btn-outline-primary mt-3" th:href="@{/ofertas(categoria=${electrodomesticosId})}">Ver Más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 text-center py-4 category-card">
+                <div class="icon-container"><i class="fas fa-shopping-basket"></i></div>
+                <div class="card-body">
+                    <h5 class="card-title">Abarrotes</h5>
+                    <p class="card-text text-muted">Leche, pan, enlatados y todo para tu despensa.</p>
+                    <a class="btn btn-outline-primary mt-3" th:href="@{/ofertas(categoria=${abarrotesId})}">Ver Más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
